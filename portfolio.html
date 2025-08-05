@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>..</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glass box styling */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .glass-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Home section */
+        .home-content {
+            text-align: center;
+        }
+
+        .home-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            margin-top: 20px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Skills section */
+        .skills-container {
+            text-align: center;
+        }
+
+        .skill-box {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 15px 25px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-box:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Projects section */
+        .projects-container {
+            width: 100%;
+        }
+
+        .project-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .project-box h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .project-links {
+            margin-top: 20px;
+        }
+
+        .project-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 8px 16px;
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .project-links a:hover {
+            background: #ff6b6b;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Contact section */
+        .contact-container {
+            text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 30px;
+        }
+
+        .contact-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 15px 30px;
+            margin: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .glass-box {
+                padding: 20px;
+            }
+            
+            .home-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .section h2 {
+                font-size: 2em;
+            }
+            
+            .nav a {
+                margin: 5px;
+                padding: 8px 15px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Additional animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-box {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="glass-box">
+                <div class="home-content">
+                    <h1>Welcome, I'm Ganesh Reddy</h1>
+                    <p>A passionate Full Stack Developer crafting digital experiences from concept to deployment. I transform ideas into powerful, scalable web applications that make a difference.</p>
+                    <p class="tagline">"Code is poetry written in logic, design is art painted with purpose."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="glass-box">
+                <h2>About Me</h2>
+                <p>As a Full Stack Developer, I bridge the gap between stunning user interfaces and robust server-side architecture. My expertise spans both frontend and backend technologies, allowing me to create seamless, end-to-end web solutions.</p>
+                <br>
+                <p>I specialize in crafting responsive, user-centric interfaces while building scalable backend systems that power modern web applications. From database design to API development, from React components to cloud deployment, I handle every aspect of the development lifecycle with precision and creativity.</p>
+                <br>
+                <p>My approach combines technical excellence with creative problem-solving, ensuring that every project not only functions flawlessly but also delivers an exceptional user experience.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="glass-box">
+                <h2>Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-box">HTML5</div>
+                    <div class="skill-box">CSS3</div>
+                    <div class="skill-box">JavaScript</div>
+                    <div class="skill-box">React</div>
+                    <div class="skill-box">Node.js</div>
+                    <div class="skill-box">Express.js</div>
+                    <div class="skill-box">MongoDB</div>
+                    <div class="skill-box">PostgreSQL</div>
+                    <div class="skill-box">Python</div>
+                    <div class="skill-box">Django</div>
+                    <div class="skill-box">AWS</div>
+                    <div class="skill-box">Docker</div>
+                    <div class="skill-box">Git</div>
+                    <div class="skill-box">REST APIs</div>
+                    <div class="skill-box">GraphQL</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="glass-box">
+                <h2>Featured Projects</h2>
+                <div class="projects-container">
+                    <div class="project-box">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-featured e-commerce platform built with React and Node.js, featuring user authentication, payment integration, inventory management, and an admin dashboard. Includes real-time notifications and responsive design for optimal shopping experience across all devices.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/ecommerce-platform" target="_blank">GitHub</a>
+                            <a href="https://ecommerce-demo.alexjohnson.dev" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-box">
+                        <h3>Task Management Dashboard</h3>
+                        <p>A comprehensive project management tool with drag-and-drop functionality, team collaboration features, and real-time updates. Built using React, Express.js, and MongoDB with Socket.io for live collaboration and data visualization charts.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/task-dashboard" target="_blank">GitHub</a>
+                            <a href="https://taskmanager-demo.alexjohnson.dev" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-box">
+                        <h3>Weather Analytics App</h3>
+                        <p>A sophisticated weather application that provides detailed forecasts, historical data analysis, and interactive maps. Features include location-based services, weather alerts, and beautiful data visualizations using Chart.js and third-party weather APIs.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/alexjohnson/weather-analytics" target="_blank">GitHub</a>
+                            <a href="https://weather-app.alexjohnson.dev" target="_blank">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="glass-box">
+                <h2>Let's Connect</h2>
+                <div class="contact-container">
+                    <p>Ready to bring your next project to life? Let's discuss how we can work together to create something amazing.</p>
+                    <div class="contact-links">
+                        <a href="mailto:alex.johnson@email.com" class="contact-link">📧 Email</a>
+                        <a href="https://github.com/alexjohnson" class="contact-link" target="_blank">💻 GitHub</a>
+                        <a href="https://linkedin.com/in/alexjohnson" class="contact-link" target="_blank">💼 LinkedIn</a>
+                        <a href="tel:+1234567890" class="contact-link">📱 Phone</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

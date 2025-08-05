@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Drawing</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(skyblue, white);
+      overflow: hidden;
+    }
+    
+    .scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+    /* Sun */
+    .sun {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      border-radius: 50%;
+      box-shadow: 0 0 40px yellow;
+    }
+    
+    /* Rainbow - using multiple box-shadows instead of pseudo-elements */
+    .rainbow {
+      position: absolute;
+      bottom: 100px;
+      left: 20%;
+      width: 400px;
+      height: 200px;
+      border-radius: 200px 200px 0 0;
+      border: 20px solid;
+      border-color: red orange yellow green blue violet;
+      border-bottom: none;
+      box-shadow: 
+        inset 0 20px 0 orange,
+        inset 0 40px 0 yellow,
+        inset 0 60px 0 green,
+        inset 0 80px 0 blue,
+        inset 0 100px 0 violet;
+    }
+    
+    /* House */
+    .house {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 150px;
+      background: #d2691e;
+      border: 3px solid black;
+    }
+    
+    /* Roof - triangle shape */
+    .roof {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 105px solid transparent;
+      border-right: 105px solid transparent;
+      border-bottom: 100px solid brown;
+    }
+    
+    /* Door */
+    .door {
+      position: absolute;
+      bottom: 0;
+      left: 80px;
+      width: 40px;
+      height: 80px;
+      background: #654321;
+      border: 2px solid black;
+    }
+    
+    /* Cloud - using box-shadow for puffy effect */
+    .cloud {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 80px;
+      height: 50px;
+      background: white;
+      border-radius: 50px;
+      box-shadow: 40px 0 white, 20px -20px white, 60px -10px white;
+    }
+    
+    /* Green Fields - using gradient for depth */
+    .grass {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to bottom, #32CD32, #228B22);
+    }
+    
+    /* Big Tree - using border-radius for trunk and leaves */
+    .tree {
+      position: absolute;
+      bottom: 60px;
+      right: 10%;
+      width: 30px;
+      height: 80px;
+      background: #8B4513;
+      border-radius: 15px;
+    }
+    
+    .tree::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -35px;
+      width: 100px;
+      height: 100px;
+      background: #228B22;
+      border-radius: 50%;
+      box-shadow: -20px -10px 0 #32CD32, 20px -10px 0 #32CD32;
+    }
+    
+    /* Rain Droplets - using box-shadow for multiple drops */
+    .rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 10px;
+      background: #87CEEB;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow: 
+        100px 50px #87CEEB, 200px 80px #87CEEB, 300px 30px #87CEEB,
+        450px 60px #87CEEB, 550px 40px #87CEEB, 650px 70px #87CEEB,
+        150px 120px #87CEEB, 350px 110px #87CEEB, 500px 100px #87CEEB,
+        80px 150px #87CEEB, 280px 140px #87CEEB, 480px 160px #87CEEB,
+        120px 200px #87CEEB, 320px 180px #87CEEB, 520px 190px #87CEEB;
+      animation: fall 2s infinite linear;
+    }
+    
+    @keyframes fall {
+      to { transform: translateY(100vh); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="rain"></div>
+    <div class="sun"></div>
+    <div class="rainbow"></div>
+    <div class="cloud"></div>
+    <div class="tree"></div>
+    <div class="house">
+      <div class="roof"></div>
+      <div class="door"></div>
+    </div>
+    <div class="grass"></div>
+  </div>
+</body>
+</html>
