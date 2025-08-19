@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentblazer Club - Shaping the Future of AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Enhanced Color Palette & Base Styles */
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-orange: #f97316;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            --dark-bg: #0f172a;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-gradient);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Animated Background Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced Header */
+        header {
+            background: var(--card-gradient);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(59,130,246,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-logos {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .agentblazer-logo {
+            width: auto;
+            height: 5rem;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .club-text {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .college-logo {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 1rem;
+            object-fit: contain;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .college-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text-large {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin: 1rem 0;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .inauguration-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Enhanced Stats Grid */
+        .stats-grid {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .stat-card {
+            background: var(--card-gradient);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-green), var(--accent-pink));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 0.5rem;
+        }
+        .stat-number.orange { 
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-number.green { 
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-number.pink { 
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Enhanced Sections */
+        main section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        main section > div {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-family: 'Orbitron', monospace;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-green));
+            border-radius: 2px;
+        }
+
+        .section-description {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Enhanced Grid & Cards */
+        .grid-3-cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-gradient);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Club Details Section */
+        .club-details {
+            background: var(--dark-bg);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .club-details .section-title {
+            color: white;
+        }
+
+        .club-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .club-stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .club-stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .club-stat-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Speaker Cards Enhancement */
+        .speaker-card {
+            background: var(--card-gradient);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .speaker-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-pink), var(--accent-purple));
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-blue);
+        }
+
+        .speaker-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .speaker-card:hover .speaker-image {
+            transform: scale(1.1);
+        }
+
+        .speaker-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .speaker-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .speaker-bio {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            color: var(--accent-orange);
+            transform: translateX(5px);
+        }
+
+        /* Timeline Enhancement */
+        #agenda {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 6rem 0;
+            min-height: auto;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-purple));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .timeline-container {
+            padding: 15px 50px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-container.left {
+            left: 0;
+        }
+
+        .timeline-container.right {
+            left: 50%;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -15px;
+            background: var(--card-gradient);
+            border: 4px solid var(--accent-orange);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        }
+
+        .timeline-container.right::after {
+            left: -15px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background: var(--card-gradient);
+            position: relative;
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Chart Container Enhancement */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 400px;
+            background: var(--card-gradient);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .features-section .section-title {
+            color: white;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        /* Member Spotlight */
+        .member-spotlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+            padding: 6rem 0;
+        }
+
+        .spotlight-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #f59e0b, #d97706, #92400e);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .member-button {
+            display: inline-block;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .member-button:hover::before {
+            left: 100%;
+        }
+
+        .member-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .inauguration-title {
+                font-size: 2rem;
+            }
+
+            .club-text {
+                font-size: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-container.right {
+                left: 0%;
+            }
+
+            .timeline-container.left::after, 
+            .timeline-container.right::after {
+                left: 18px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            background: var(--card-gradient);
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+        }
+
+        .demo-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .demo-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+        }
+
+        /* Achievements Gallery */
+        .achievements-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .achievement-content {
+            padding: 2rem;
+        }
+
+        .achievement-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .achievement-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo">AgentBlazer</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#speakers">Speakers</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#club-details">Club</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#join">Join</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logos">
+                    <img src="https://agentblazer-club-au.github.io/launch/Agentblazer-logo.png" alt="Agentblazer Logo" class="agentblazer-logo">
+                    <span class="club-text">club</span>
+                </div>
+                
+                <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 2rem;">
+                    <img src="https://agentblazer-club-au.github.io/launch/anurag-logo-2.png" alt="College Logo" class="college-logo">
+                </div>
+                
+                <p class="header-text-large">An Initiative by The Office of Industry Alliances</p>
+                <p class="header-text-large">In collaboration with Salesforce Global Workforce Development Team</p>
+                <h1 class="inauguration-title">Inauguration Ceremony</h1>
+                <p class="header-text-large" style="color: var(--accent-orange); font-weight: 700;">August 5, 2025</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p class="stat-number orange">150+</p>
+                        <p class="stat-label">Expected Attendees</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number green">8</p>
+                        <p class="stat-label">Keynote Sessions & Activities</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-number pink">1</p>
+                        <p class="stat-label">Pioneering Community</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Club Details Section -->
+        <section id="club-details" class="club-details">
+            <div>
+                <h2 class="section-title">About Agentblazer Club</h2>
+                <p class="section-description" style="color: rgba(255, 255, 255, 0.8);">
+                    The Agentblazer Club is a pioneering initiative designed to bridge the gap between academic learning and industry innovation. We focus on empowering students with cutting-edge knowledge in Agentforce technology and Responsible AI practices.
+                </p>
+                
+                <div class="grid-3-cols">
+                    <div class="feature-card">
+                        <span class="feature-icon">🎯</span>
+                        <h3 class="card-title" style="color: white;">Our Mission</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">To create a vibrant ecosystem where students can explore, learn, and innovate in the field of AI and automation technologies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔮</span>
+                        <h3 class="card-title" style="color: white;">Our Vision</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">To be the leading student community that shapes the future of responsible AI development and implementation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚡</span>
+                        <h3 class="card-title" style="color: white;">Our Impact</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Connecting 500+ students with industry professionals, fostering innovation, and creating pathways to successful tech careers.</p>
+                    </div>
+                </div>
+
+                <div class="club-stats">
+                    <div class="club-stat">
+                        <div class="club-stat-number">50+</div>
+                        <div class="club-stat-label">Active Members</div>
+                    </div>
+                    <div class="club-stat">
+                        <div class="club-stat-number">12</div>
+                        <div class="club-stat-label">Industry Partners</div>
+                    </div>
+                    <div class="club-stat">
+                        <div class="club-stat-number">25+</div>
+                        <div class="club-stat-label">Projects Completed</div>
+                    </div>
+                    <div class="club-stat">
+                        <div class="club-stat-number">100%</div>
+                        <div class="club-stat-label">Placement Success</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Speakers Section -->
+        <section id="speakers" style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+            <div>
+                <h2 class="section-title">Meet Our Distinguished Speakers</h2>
+                <p class="section-description">Industry leaders and academic experts who will guide you through the future of AI and technology.</p>
+                <div id="speakers-container" class="grid-3-cols">
+                    <!-- Speaker cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Features Section -->
+        <section id="features" class="features-section">
+            <div>
+                <h2 class="section-title">What Makes Us Special</h2>
+                <div class="grid-3-cols">
+                    <div class="feature-card">
+                        <span class="feature-icon">🧠</span>
+                        <h3 class="card-title" style="color: white;">AI-Powered Learning</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Hands-on experience with cutting-edge AI tools and technologies used in industry.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🤝</span>
+                        <h3 class="card-title" style="color: white;">Industry Connections</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Direct mentorship and networking opportunities with Salesforce professionals.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🏗️</span>
+                        <h3 class="card-title" style="color: white;">Real-World Projects</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Work on actual business challenges and build solutions that matter.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📈</span>
+                        <h3 class="card-title" style="color: white;">Career Growth</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Comprehensive training programs leading to industry certifications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🌟</span>
+                        <h3 class="card-title" style="color: white;">Innovation Hub</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Access to latest tools, resources, and collaborative workspace.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🎓</span>
+                        <h3 class="card-title" style="color: white;">Academic Excellence</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Integration with curriculum and research opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Vision Section -->
+        <section id="vision" style="background: white;">
+            <div>
+                <h2 class="section-title">Our Vision & Mission</h2>
+                <p class="section-description">
+                    The official launch of the Agentblazer Club aims to build a vibrant community centered around Agentforce and Responsible AI, inspiring students to pursue groundbreaking careers and fostering connections with industry leaders.
+                </p>
+                <div class="grid-3-cols">
+                    <div class="card">
+                        <span class="card-icon">🚀</span>
+                        <h3 class="card-title">Official Launch</h3>
+                        <p class="card-text">Formally introduce the club to the university community and our industry partners.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🌟</span>
+                        <h3 class="card-title">Inspire & Motivate</h3>
+                        <p class="card-text">Share insights on career opportunities in Agentforce and Responsible AI.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🏆</span>
+                        <h3 class="card-title">Showcase Talent</h3>
+                        <p class="card-text">Highlight student achievements through project presentations and awards.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🤝</span>
+                        <h3 class="card-title">Facilitate Networking</h3>
+                        <p class="card-text">Connect students with faculty, club leads, and industry professionals.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🌎</span>
+                        <h3 class="card-title">Outline Initiatives</h3>
+                        <p class="card-text">Present the club's roadmap, including summer training and future projects.</p>
+                    </div>
+                    <div class="card">
+                        <span class="card-icon">🧠</span>
+                        <h3 class="card-title">Generate Awareness</h3>
+                        <p class="card-text">Educate attendees on the club's mission, vision, and planned activities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Agenda Section -->
+        <section id="agenda" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 6rem 0; min-height: auto;">
+            <div>
+                <h2 class="section-title">The Inaugural Agenda</h2>
+                <p class="section-description">A carefully curated program designed to maximize learning, networking, and inspiration.</p>
+                <div class="timeline">
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">09:15 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Welcome Reception</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">You will be received by Club Leads at the campus. Registration and welcome kit distribution.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">09:30 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Coffee & Networking</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Interactive networking session with the Director of the Office of Industry Alliances & team.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">10:00 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Welcome Speech by Dean, School of Engineering</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Inspirational keynote to officially kick off the event and set the tone for innovation.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">10:10 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Welcome & Inaugural Speech</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">By the Director, the Office of Industry Alliances. Vision and roadmap presentation.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">10:20 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Salesforce Training Overview</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Summer Break training program details by Vikas Bandaru, Technical Manager, OIA.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">10:30 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Top Project Presentations</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Students showcase their innovative projects with live demonstrations.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">11:00 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Special Achievement Awards</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Recognition ceremony for outstanding 2026 Batch participants.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">11:15 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Introducing Student Leads</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Meet the club's leadership team and learn about exciting future plans and initiatives.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">11:30 AM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Expert Session by Guest Speaker</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">"Future-Proof Your Tech Career: An Insider Guide to Salesforce for Freshers", followed by interactive Q&A.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">12:15 PM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Agentforce Project Expo</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Explore innovative projects and network with peers, faculty, and industry professionals.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3 style="font-weight: 700; font-size: 1.25rem; color: var(--primary-blue);">01:20 PM</h3>
+                            <p style="font-weight: 600; margin: 0.5rem 0;">Networking Lunch</p>
+                            <p style="font-size: 1rem; color: var(--text-light);">Connect, collaborate, and refuel with delicious refreshments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements & Success Stories -->
+        <section id="achievements" style="background: white;">
+            <div>
+                <h2 class="section-title">Student Achievements & Success Stories</h2>
+                <p class="section-description">Celebrating the remarkable accomplishments of our club members and their journey towards excellence.</p>
+                
+                <div class="achievements-gallery">
+                    <div class="achievement-card">
+                        <div class="achievement-image">🏅</div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Salesforce Developer Certification</h3>
+                            <p class="achievement-description">15 students successfully obtained industry-recognized Salesforce Developer certifications through our training program.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-image">🚀</div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Innovation Challenge Winner</h3>
+                            <p class="achievement-description">Our team won the National AI Innovation Challenge with an Agentforce-powered solution for healthcare automation.</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-image">💼</div>
+                        <div class="achievement-content">
+                            <h3 class="achievement-title">Industry Placements</h3>
+                            <p class="achievement-description">100% placement success rate with leading tech companies including Salesforce, Microsoft, and Google.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" style="background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);">
+            <div>
+                <h2 class="section-title">Experience Agentforce Technology</h2>
+                <p class="section-description">Try our interactive demo to see how Agentforce can transform business processes.</p>
+                
+                <div class="interactive-demo">
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--primary-blue);">AI Career Advisor Demo</h3>
+                    <input type="text" id="careerInput" class="demo-input" placeholder="Enter your skills or interests (e.g., 'machine learning, python')">
+                    <button onclick="generateCareerAdvice()" class="demo-button">
+                        <span id="buttonText">Get AI Career Advice</span>
+                        <span id="buttonLoader" class="loading" style="display: none; margin-left: 10px;"></span>
+                    </button>
+                    <div id="careerOutput" style="margin-top: 2rem; padding: 2rem; background: #f8fafc; border-radius: 1rem; border: 2px solid #e2e8f0; min-height: 100px; display: none;">
+                        <p style="color: var(--text-light); text-align: center;">Your personalized career advice will appear here...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Responsible AI Pillars -->
+        <section id="responsible-ai-pillars" style="background: white;">
+            <div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;">
+                    <div style="text-align: center;">
+                        <h2 class="section-title">Why Agentforce & Responsible AI?</h2>
+                        <p class="section-description">
+                            Agentforce and Responsible AI are at the forefront of technological innovation. Understanding these principles is crucial for building trustworthy AI solutions that address real-world challenges with integrity.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="chart-container">
+                            <canvas id="responsibleAIChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Member Spotlight -->
+        <section id="spotlight" class="member-spotlight">
+            <div>
+                <div class="spotlight-card">
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center;">
+                        <div style="text-align: center;">
+                            <p style="font-size: 6rem; margin-bottom: 1rem;">🏆</p>
+                            <p style="font-size: 4rem; font-weight: 800; color: #d97706; margin-bottom: 1rem; font-family: 'Orbitron', monospace;">2</p>
+                            <p style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--text-dark);">Major Recognitions</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <h2 class="section-title" style="color: var(--text-dark); margin-bottom: 2rem;">Spotlight on Student Excellence</h2>
+                            <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.8;">
+                                A core part of our mission is to celebrate student achievement. The inauguration will feature two key recognitions: the <strong style="color: var(--accent-orange);">Best Project Presentation</strong>, where students showcase their practical skills, and the <strong style="color: var(--accent-green);">Special Achievement Awards</strong>, honoring outstanding contributions throughout the year.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Learning Blocks -->
+        <section id="sessions" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+            <div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;">
+                    <div class="card">
+                        <div class="chart-container">
+                            <canvas id="sessionsChart"></canvas>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <h2 class="section-title">Core Interactive Learning Blocks</h2>
+                        <p class="section-description">
+                            Two hours dedicated to immersive, interactive experiences. Equal focus on career-oriented sessions and hands-on project exploration, ensuring attendees get balanced expert insight and peer-to-peer learning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Future Impact -->
+        <section id="impact" style="background: white;">
+            <div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center;">
+                    <div style="text-align: center;">
+                        <h2 class="section-title">Expected Impact & Future Growth</h2>
+                        <p class="section-description">
+                            The inauguration marks the beginning of exponential growth. We anticipate significant increases in student engagement, industry partnerships, and innovative project outcomes as we expand our programs.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="chart-container">
+                            <canvas id="impactChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Location -->
+        <section id="contact" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white;">
+            <div>
+                <h2 class="section-title" style="color: white;">Get in Touch</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                    <div class="feature-card">
+                        <span class="feature-icon">📍</span>
+                        <h3 class="card-title" style="color: white;">Location</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Anurag University<br>Venkatapur, Ghatkesar<br>Hyderabad, Telangana 501301</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📧</span>
+                        <h3 class="card-title" style="color: white;">Email</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">agentblazer@anurag.edu.in<br>industry.alliances@anurag.edu.in</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📱</span>
+                        <h3 class="card-title" style="color: white;">Connect</h3>
+                        <p class="card-text" style="color: rgba(255, 255, 255, 0.8);">Follow us on social media<br>Join our Discord community<br>Subscribe to our newsletter</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer id="join">
+        <div class="container">
+            <div class="footer-content">
+                <h2 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; font-family: 'Orbitron', monospace;">Ready to Innovate?</h2>
+                <p style="font-size: 1.5rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">Join the Agentblazer Club and be part of the future of AI</p>
+                <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 3rem;">Shape tomorrow's technology today. Connect. Learn. Innovate.</p>
+                <a href="https://forms.gle/Lk92B7SRBnPhFho68" target="_blank" class="member-button">
+                    🚀 Become a Member
+                </a>
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                    <p style="color: rgba(255, 255, 255, 0.6);">© 2025 Agentblazer Club | Anurag University | All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced JavaScript with all functionality
+        
+        // Particle Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Speakers data
+        // Speakers data
+const speakers = [
+    {
+        name: "Dr. V Vijaya Kumar",
+        title: "Dean, School of Engineering",
+        bio: "Delivering the welcome speech to kick off the Agentblazer Club inauguration, inspiring students to embrace innovation and technology.",
+        image: "https://anurag.edu.in/wp-content/uploads/2023/02/KVK2995.jpg",
+        linkedin: "https://linkedin.com/in/v-vijaya-kumar"
+    },
+    {
+        name: "Dr. Siddhartha Ghosh",
+        title: "Director, Office of Industry Alliances",
+        bio: "Leading the inaugural speech, sharing the vision and roadmap for the Agentblazer Club in collaboration with industry partners.",
+        image: "https://media.licdn.com/dms/image/v2/D5603AQG4ABEiCPI_3Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1722451334583?e=1758758400&v=beta&t=KylDln0lSaG4Jxqn9xQiTi5SoSJukpW-cmWVA__-MUk",
+        linkedin: "https://www.linkedin.com/in/dr-siddhartha-ghosh-ba019016/"
+    },
+    {
+        name: "Vikas Bandaru",
+        title: "Technical Manager, OIA",
+        bio: "Presenting an overview of Salesforce training programs offered during the summer break to empower students with industry skills.",
+        image: "https://anurag.edu.in/wp-content/uploads/elementor/thumbs/vikas-r895mj3w2dfqmdobw89k9kbqmd47uolga4h3zoba5i.jpg",
+        linkedin: "https://www.linkedin.com/in/vikas-bandaru/"
+    },
+    {
+        name: "Ravi Tamada",
+        title: "Solutions Architect, Capgemini",
+        bio: "Delivering an expert session on 'Salesforce Career Guidance,' providing insights and answering student queries.",
+        image: "https://pbs.twimg.com/profile_images/1491072433256022017/z3HaQo36_400x400.jpg",
+        linkedin: "https://www.linkedin.com/in/ravi-tamada-7543bb1a/"
+    }
+];
+        // Generate speaker cards
+        function generateSpeakerCards() {
+            const container = document.getElementById('speakers-container');
+            speakers.forEach(speaker => {
+                const card = document.createElement('div');
+                card.className = 'speaker-card';
+                card.innerHTML = `
+                    <img src="${speaker.image}" alt="${speaker.name}" class="speaker-image">
+                    <h3 class="speaker-name">${speaker.name}</h3>
+                    <p class="speaker-title">${speaker.title}</p>
+                    <p class="speaker-bio">${speaker.bio}</p>
+                    <a href="${speaker.linkedin}" target="_blank" class="linkedin-link">
+                        <span class="linkedin-icon">💼</span>
+                        Connect on LinkedIn
+                    </a>
+                `;
+                container.appendChild(card);
+            });
+        }
+        // Career Advice Generator
+        function generateCareerAdvice() {
+            const input = document.getElementById('careerInput').value.trim();
+            const output = document.getElementById('careerOutput');
+            const buttonText = document.getElementById('buttonText');
+            const buttonLoader = document.getElementById('buttonLoader');
+            if (!input) {
+                output.style.display = 'block';
+                output.innerHTML = '<p style="color: #ef4444; text-align: center; font-weight: 600;">Please enter your skills or interests first!</p>';
+                return;
+            }
+            // Show loading state
+            buttonText.textContent = 'Analyzing...';
+            buttonLoader.style.display = 'inline-block';
+            output.style.display = 'block';
+            output.innerHTML = '<p style="color: var(--text-light); text-align: center;">🤖 AI is analyzing your profile...</p>';
+
+            // Simulate AI processing
+            setTimeout(() => {
+                const advice = generateAdviceContent(input);
+                output.innerHTML = advice;
+                buttonText.textContent = 'Get AI Career Advice';
+                buttonLoader.style.display = 'none';
+            }, 2000);
+        }
+
+        function generateAdviceContent(skills) {
+            const skillsLower = skills.toLowerCase();
+            let advice = '<div style="text-align: left;">';
+            
+            advice += '<h4 style="color: var(--primary-blue); font-size: 1.3rem; margin-bottom: 1rem;">🎯 Personalized Career Path</h4>';
+            
+            if (skillsLower.includes('machine learning') || skillsLower.includes('ml') || skillsLower.includes('ai')) {
+                advice += `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h5 style="color: var(--accent-orange); font-weight: 600; margin-bottom: 0.5rem;">Recommended Role: AI/ML Engineer</h5>
+                        <p style="margin-bottom: 1rem;">Perfect fit for Agentforce development! Focus on:</p>
+                        <ul style="color: var(--text-light); margin-left: 1.5rem;">
+                            <li>Salesforce Einstein Platform Services</li>
+                            <li>Agentforce SDK and APIs</li>
+                            <li>Responsible AI frameworks</li>
+                            <li>MLOps and model deployment</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (skillsLower.includes('python') || skillsLower.includes('programming') || skillsLower.includes('coding')) {
+                advice += `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h5 style="color: var(--accent-green); font-weight: 600; margin-bottom: 0.5rem;">Recommended Role: Salesforce Developer</h5>
+                        <p style="margin-bottom: 1rem;">Great foundation for Agentforce! Next steps:</p>
+                        <ul style="color: var(--text-light); margin-left: 1.5rem;">
+                            <li>Learn Apex and Lightning Web Components</li>
+                            <li>Master Salesforce Flow Builder</li>
+                            <li>Explore Agentforce Action Builder</li>
+                            <li>Get Platform Developer I certification</li>
+                        </ul>
+                    </div>
+                `;
+            } else if (skillsLower.includes('data') || skillsLower.includes('analytics')) {
+                advice += `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h5 style="color: var(--accent-purple); font-weight: 600; margin-bottom: 0.5rem;">Recommended Role: Data Scientist</h5>
+                        <p style="margin-bottom: 1rem;">Excellent for AI-driven insights! Focus areas:</p>
+                        <ul style="color: var(--text-light); margin-left: 1.5rem;">
+                            <li>Salesforce Analytics Cloud</li>
+                            <li>Einstein Discovery</li>
+                            <li>Agentforce Analytics</li>
+                            <li>Data visualization and storytelling</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                advice += `
+                    <div style="margin-bottom: 1.5rem;">
+                        <h5 style="color: var(--accent-pink); font-weight: 600; margin-bottom: 0.5rem;">Recommended: Explore AI Fundamentals</h5>
+                        <p style="margin-bottom: 1rem;">Start your AI journey with us! Suggested path:</p>
+                        <ul style="color: var(--text-light); margin-left: 1.5rem;">
+                            <li>Join our AI Fundamentals workshop</li>
+                            <li>Learn basic programming (Python/JavaScript)</li>
+                            <li>Explore Salesforce Trailhead</li>
+                            <li>Attend our weekly study groups</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            advice += `
+                <div style="background: linear-gradient(135deg, #ddd6fe, #c4b5fd); padding: 1.5rem; border-radius: 0.5rem; margin-top: 1.5rem;">
+                    <h5 style="color: var(--primary-blue); font-weight: 600; margin-bottom: 0.5rem;">🌟 Agentblazer Club Benefits for You:</h5>
+                    <p style="color: var(--text-dark); font-size: 0.95rem;">• Personalized mentorship • Industry project experience • Certification support • Networking opportunities • Career placement assistance</p>
+                </div>
+            </div>`;
+            
+            return advice;
+        }
+
+        // Enhanced Charts
+        function createResponsibleAIChart() {
+            const ctx = document.getElementById('responsibleAIChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Transparency', 'Fairness', 'Accountability', 'Privacy', 'Safety', 'Human-Centric'],
+                    datasets: [{
+                        data: [18, 17, 16, 17, 16, 16],
+                        backgroundColor: [
+                            '#3b82f6', '#10b981', '#f97316', '#8b5cf6', '#ec4899', '#06b6d4'
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: { size: 12, weight: '600' },
+                                color: '#374151'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Responsible AI Pillars',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#1e40af'
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        duration: 2000
+                    }
+                }
+            });
+        }
+
+        function createSessionsChart() {
+            const ctx = document.getElementById('sessionsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Expert Career Session', 'Project Expo & Networking'],
+                    datasets: [{
+                        data: [50, 50],
+                        backgroundColor: ['#f97316', '#10b981'],
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: { size: 14, weight: '600' },
+                                color: '#374151'
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Interactive Learning Distribution',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#1e40af'
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        duration: 1500
+                    }
+                }
+            });
+        }
+
+        function createImpactChart() {
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Pre-Launch', 'Month 1', 'Month 3', 'Month 6', 'Month 12', 'Year 2'],
+                    datasets: [{
+                        label: 'Active Members',
+                        data: [25, 60, 120, 200, 350, 500],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#3b82f6',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 3,
+                        pointRadius: 6
+                    }, {
+                        label: 'Industry Projects',
+                        data: [5, 8, 15, 25, 40, 60],
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#10b981',
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 3,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { size: 12, weight: '600' },
+                                color: '#374151',
+                                padding: 20
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Projected Growth Trajectory',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#1e40af'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                            ticks: { color: '#6b7280', font: { weight: '500' } }
+                        },
+                        x: {
+                            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                            ticks: { color: '#6b7280', font: { weight: '500' } }
+                        }
+                    },
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.card, .timeline-content, .feature-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Enhanced counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number, .club-stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                        const suffix = counter.textContent.replace(/[0-9]/g, '');
+                        
+                        let current = 0;
+                        const increment = target / 100;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
+                            counter.textContent = Math.floor(current) + suffix;
+                        }, 20);
+                        
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Interactive elements enhancement
+        function enhanceInteractivity() {
+            // Add hover effects to cards
+            document.querySelectorAll('.card, .speaker-card, .feature-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add click animations
+            document.querySelectorAll('.member-button, .demo-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    button.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        button.style.transform = '';
+                    }, 150);
+                });
+            });
+        }
+
+        // Typing effect for hero text
+        function typewriterEffect() {
+            const text = "Shaping the Future of AI, One Student at a Time";
+            const element = document.createElement('p');
+            element.style.cssText = `
+                font-size: 1.5rem; 
+                color: var(--text-light); 
+                text-align: center; 
+                margin-top: 1rem;
+                font-weight: 500;
+                min-height: 2rem;
+            `;
+            
+            const titleElement = document.querySelector('.inauguration-title');
+            titleElement.parentNode.insertBefore(element, titleElement.nextSibling);
+            
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 100);
+                }
+            }
+            
+            setTimeout(type, 1000);
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            generateSpeakerCards();
+            setupSmoothScrolling();
+            handleScrollAnimations();
+            enhanceInteractivity();
+            animateCounters();
+            typewriterEffect();
+            
+            // Initialize charts with delay for better user experience
+            setTimeout(() => {
+                createResponsibleAIChart();
+                createSessionsChart();
+                createImpactChart();
+            }, 500);
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && e.target.id === 'careerInput') {
+                generateCareerAdvice();
+            }
+        });
+
+        // Performance optimization: Lazy load images
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // Add floating action button for quick access
+        function createFloatingActionButton() {
+            const fab = document.createElement('div');
+            fab.style.cssText = `
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, var(--accent-orange), #ea580c);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1000;
+                box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
+                transition: all 0.3s ease;
+            `;
+            fab.innerHTML = '↑';
+            fab.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            fab.addEventListener('mouseenter', () => {
+                fab.style.transform = 'scale(1.1)';
+                fab.style.boxShadow = '0 15px 40px rgba(249, 115, 22, 0.4)';
+            });
+            fab.addEventListener('mouseleave', () => {
+                fab.style.transform = 'scale(1)';
+                fab.style.boxShadow = '0 10px 30px rgba(249, 115, 22, 0.3)';
+            });
+            
+            document.body.appendChild(fab);
+            
+            // Show/hide based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    fab.style.display = 'flex';
+                } else {
+                    fab.style.display = 'none';
+                }
+            });
+            fab.style.display = 'none';
+        }
+
+        // Initialize floating action button
+        setTimeout(createFloatingActionButton, 1000);
+
+        // Add progressive enhancement for modern browsers
+        if ('IntersectionObserver' in window) {
+            // Enable advanced animations
+            document.body.classList.add('enhanced-animations');
+        }
+
+        // Error handling for charts
+        window.addEventListener('error', (e) => {
+            console.error('Chart loading error:', e);
+            // Fallback: show static content if charts fail
+            document.querySelectorAll('.chart-container').forEach(container => {
+                if (!container.querySelector('canvas').getContext) {
+                    container.innerHTML = '<p style="text-align: center; color: var(--text-light);">Interactive chart loading...</p>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
